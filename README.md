@@ -1,18 +1,26 @@
-MLOPS-production-ready-project
-- Anaconda : https:www.anacomnda.com/
-- Vs code: https:www.visualstudio.com/
+# MLOps Production Ready Machine Learning Project
+
+## Prerequisites
+
+- Anaconda: https://www.anaconda.com/
+- VS Code: https://code.visualstudio.com/download
 - Git: https://git-scm.com/
-- flowchart : https://whimsical.com/
-- MLOPs tool : https://evidentlyai.com/
+- Whimsical (Flowcharts): https://whimsical.com/
+- Evidently AI: https://www.evidentlyai.com/
+- MongoDB Atlas: https://account.mongodb.com/account/login
+- Dataset (Kaggle): https://www.kaggle.com/datasets/moro23/easyvisa-dataset
 
-git commands
+---
 
+## Git Commands
+
+```bash
+git init
 git add .
-git commit -m "updated"
-git push origin main
-
-------
-
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin <repository-url>
+git push -u origin main
 ## how to run
 
 conda create -n visa python=3.8 -y
