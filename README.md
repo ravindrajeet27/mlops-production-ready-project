@@ -28,3 +28,12 @@ conda create -n visa python=3.8 -y
 conda activate visa
 
 pip install requirements
+
+
+# Workflow:
+
+1 constant 
+2 entity
+3 components
+4 pipeline
+
