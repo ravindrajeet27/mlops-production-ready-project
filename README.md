@@ -36,4 +36,6 @@ pip install requirements
 2 entity
 3 components
 4 pipeline
+5 main File
+6 aws deployement
 
