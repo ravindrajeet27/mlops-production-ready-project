@@ -1,4 +1,3 @@
-from us_visa.pipeline.training_pipeline import TrainingPipeline
+from us_visa.logger import logging
 
-object = TrainingPipeline()
-object.run_pipeline()
+logging.info("Starting the US Visa Prediction Pipeline...")
