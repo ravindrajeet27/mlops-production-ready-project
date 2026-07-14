@@ -20,23 +20,38 @@ class USvisaData:
             self.mongo_client = MongoDBClient(database_name=DATABASE_NAME)
         except Exception as e:
             raise USvisaException(e,sys)
-        
 
-    def export_collection_as_dataframe(self,collection_name:str,database_name:Optional[str]=None)->pd.DataFrame:
+    def export_collection_as_dataframe(
+    self,
+    collection_name: str,
+    database_name: Optional[str] = None
+) -> pd.DataFrame:
         try:
             """
-            export entire collectin as dataframe:
-            return pd.DataFrame of collection
+            Export entire collection as a pandas DataFrame.
             """
+
             if database_name is None:
                 collection = self.mongo_client.database[collection_name]
             else:
                 collection = self.mongo_client[database_name][collection_name]
 
-            df = pd.DataFrame(list(collection.find()))
+            print("Database:", self.mongo_client.database.name)
+            print("Collection:", collection_name)
+
+            documents = list(collection.find())
+
+            print("Number of documents:", len(documents))
+            print("First document:", documents[:1])
+
+            df = pd.DataFrame(documents)
+
             if "_id" in df.columns:
                 df = df.drop(columns=["_id"])
-            df.replace({"na":np.nan},inplace=True)
+
+            df.replace({"na": np.nan}, inplace=True)
+
             return df
+
         except Exception as e:
-            raise USvisaException(e,sys)
+            raise USvisaException(e, sys)

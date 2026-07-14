@@ -4,6 +4,10 @@ from us_visa.entity.config_entity import (
     TrainingPipelineConfig,
     DataIngestionConfig,
 )
+from us_visa.entity.artifact_entity import (
+    DataIngestionArtifact,
+    DataValidationArtifact
+)
 
 from us_visa.components.data_ingestion import DataIngestion
 from us_visa.exception import USvisaException
@@ -53,8 +57,13 @@ class TrainingPipeline:
             logging.info("Training Pipeline Started")
 
             data_ingestion_artifact = self.start_data_ingestion()
+            data_validation_artifact = DataValidationArtifact(
+                data_ingestion_artifact=DataIngestionArtifact,
+                data_validation_config=self.training_pipeline_config.data_validation_config
+            )
 
             logging.info(f"Data Ingestion Artifact: {data_ingestion_artifact}")
+            logging.info(f"Data Validation Artifact: {data_validation_artifact}")
 
             logging.info("Training Pipeline Completed Successfully")
 

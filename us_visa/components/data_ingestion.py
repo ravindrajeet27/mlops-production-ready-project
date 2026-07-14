@@ -3,6 +3,7 @@ import sys  #used for exception handling and system-specific parameters
 
 from pandas import DataFrame
 from sklearn.model_selection import train_test_split
+from streamlit import dataframe
 
 from us_visa.entity.config_entity import DataIngestionConfig 
 # contains the configuration for data ingestion, such as file paths  and test size
@@ -24,6 +25,9 @@ class DataIngestion:
 
             dataframe = self.export_data_into_feature_store()
 
+            
+            print(dataframe.shape)
+            print(dataframe.head())
             self.split_data_as_train_test(dataframe)
 
             data_ingestion_artifact = DataIngestionArtifact(

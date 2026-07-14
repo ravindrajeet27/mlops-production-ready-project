@@ -1,3 +1,7 @@
-from us_visa.logger import logging
+import os
 
-logging.info("Starting the US Visa Prediction Pipeline...")
+print("MONGODB_URL =", os.getenv("MONGODB_URL"))
+
+from us_visa.pipeline.training_pipeline import TrainingPipeline
+obj = TrainingPipeline()
+obj.run_pipeline()
